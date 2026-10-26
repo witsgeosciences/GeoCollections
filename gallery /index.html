@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geoscience Gallery (Protected)</title>
+  <style>
+    /* Prevent context-menu, drag, or selection on images */
+.gallery img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+body {
+  -webkit-touch-callout: none; /* block iOS long-press save */
+}
+    :root { --bg:#111; --fg:#eee; --accent:#3a8; --muted:#aaa; }
+    *{box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);margin:0}
+    .wrap{padding:2rem}
+    .lockscreen{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center}
+    .logo{width:180px;height:auto;opacity:.95}
+    .panel{background:#1b1b1b;padding:1.25rem;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.45);max-width:360px;width:100%}
+    h2{margin:.25rem 0 .5rem 0;font-weight:500}
+    input{width:100%;padding:.6rem .8rem;border-radius:10px;border:1px solid #333;background:#0e0e0e;color:var(--fg);outline:none}
+    button{padding:.6rem 1rem;border:none;border-radius:10px;background:var(--accent);color:white;cursor:pointer;margin-top:.5rem;width:100%}
+    .hint{color:var(--muted);font-size:.9rem;margin-top:.25rem}
+    .error{color:#f66;min-height:1.1rem}
+    .debug{display:none;text-align:left;font-family:ui-monospace, SFMono-Regular, Menlo, monospace;font-size:.85rem;background:#0b0b0b;border:1px solid #333;border-radius:10px;padding:.75rem;margin-top:.75rem;white-space:pre-wrap;word-break:break-word}
+
+    /* Hidden by default; revealed when body has .unlocked */
+    #gallery{display:none;padding:2rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;justify-items:center}
+    img,video{width:100%;max-width:520px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.5);transition:transform .2s}
+    img:hover,video:hover{transform:scale(1.02)}
+    body.unlocked #lockscreen{display:none}
+    body.unlocked #gallery{display:block}
+
+    @media (max-width:600px){.wrap{padding:1rem}}
+  </style>
+</head>
+<body>
+  <script>
+// disable right-click context menu anywhere on the page
+document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
+  <div class="wrap">
+    <div class="lockscreen" id="lockscreen">
+      <img src="Geo_Colour_WhiteText.png" alt="Wits Geosciences" class="logo" onerror="this.style.display='none'">
+      <div class="panel">
+        <h2>Enter access code</h2>
+        <input type="password" id="passcode" placeholder="Passcode" autocomplete="off" inputmode="text" aria-label="Access code">
+        <button id="unlock" type="button">Unlock</button>
+        <div id="error" class="error"></div>
+        <div class="hint">Tip: Received via email. Press Unlock to open the gallery.</div>
+        <div id="debug" class="debug" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="gallery" id="gallery">
+      <h1>Geoscience Sample Gallery</h1>
+       <div class="grid">
+  <!-- your files -->
+        <figure>
+          <img src="BM18940-GFSA1 Nigel Reef Old sub-Nigel mine East Rand 56.95 troy oz 1.771kg 22.5cm.jpg" alt="BM18940">
+          <figcaption>BM18940 (GFSA1) Nigel Reef Old sub-Nigel mine East Rand 56.95 troy oz 1.771kg 22.5cm</figcaption>
+        </figure>
+        <figure>
+          <img src="BM18941-GFSA2 B Nigel Reef Old Vogelstruisbult mine 9.47 troy oz 10.5cm.jpg" alt="BM18941">
+          <figcaption>BM18941 (GFSA2) Nigel Reef Old Vogelstruisbult mine 9.47 troy oz 10.5cm</figcaption>
+        </figure>
+        <figure>
+          <img src="BM18942-Gold Nigel Reef GFSA3 5cm.jpg" alt="BM18942">
+          <figcaption>BM18942 (GFSA3) Gold Nigel Reef GFSA3 5cm</figcaption>
+        </figure>
+        <figure>
+          <img src="BM18943-GFSA4 E 6.5cm.jpg" alt="BM18943 GFSA4">
+          <figcaption>BM18942 (GFSA4)6.5cm</figcaption>
+        </figure>
+        <figure>
+          <img src="BM18947-GFSA8 A tree 2.3cm.jpg" alt="BM18947 GFSA8">
+          <figcaption>BM18942 (GFSA8) The Christmas Tree Gold Dendrite</figcaption>
+        </figure>
+        <figure>
+          <img src="BM18950-GFSA11 B Main reef Old Robinson Deep mine pyrite 8cm.jpg" alt="BM18950 GFSA11">
+          <figcaption>BM18950 (GFSA11) Main reef Old Robinson Deep mine pyrite 8cm</figcaption>
+       </figure>
+         <figure>
+          <img src="BM18948-GFSA9 B Sheared Reef Old Rietfontein mine 8.19 troy oz 12.8cm.jpg" alt="BM18948 GFSA9">
+          <figcaption>BM18948 (GFSA9) Sheared Reef Old Rietfontein mine 8.19 troy oz 12.8cm</figcaption>
+       </figure>
+        <figure>
+          <img src="BM18954-GFSA15 A West Driefontein 8.4cm.jpg" alt="BM18954 GFSA15">
+          <figcaption>BM18954 (GFSA15) West Driefontein 8.4cm </figcaption>
+       </figure>
+        <figure>
+          <img src="BM18958-Gold GFSA19 5.2cm.jpg" alt="BM18954 GFSA19">
+          <figcaption>BM18958 (GFSA19) 5.2cm </figcaption>
+       </figure>
+        <figure>
+          <img src="BM18982_BF76.jpg" alt="BM18982 BF76">
+          <figcaption>BM18982 (BF76)</figcaption>
+        </figure>
+        <figure>
+          <img src="BM18983_BF80.jpg" alt="BM18983 BF80">
+          <figcaption>BM18983 (BF80)</figcaption>
+        </figure>
+        <figure>
+          <img src="BM18984_BF81.jpg" alt="BM18984 BF81">
+          <figcaption>BM18984 (BF81)</figcaption>
+        </figure>
+        <figure>
+          <img src="Gold selections.jpg" alt="Gold selections">
+          <figcaption> Gold selections from Nigel Reef </figcaption>
+        </figure>
+        <figure>
+          <img src="Polished Conglomerate (Visible Gold) Zoom.jpg" alt="Polished Conglomerate Visible Gold Zoom">
+          <figcaption>Polished Conglomerate Visible Gold Zoom</figcaption>
+        </figure>
+        <figure>
+          <img src="Polished Conglomerate (Visible Gold).jpg" alt="Polished Conglomerate Visible Gold">
+          <figcaption>Polished Conglomerate Visible Gold</figcaption>
+        </figure>
+        <figure>
+          <img src="WG-V-3(High res).jpg" alt="WG-V-3 High res">
+          <figcaption>WG-V-3 High res</figcaption>
+        </figure>
+        <figure>
+          <img src="WG-V-29.jpg" alt="WG-V-29">
+          <figcaption>WG-V-29</figcaption>
+        </figure>
+        <figure>
+         <img src="WG-V-30.jpg" alt="WG-V-30">
+          <figcaption>WG-V-30</figcaption>
+        </figure>
+        <figure>
+          <img src="WG-V-35.jpg" alt="WG-V-35">
+          <figcaption>WG-V-35</figcaption>
+        </figure>
+        <figure>
+          <img src="WG-V-39.jpg" alt="WG-V-39">
+          <figcaption>WG-V-39</figcaption>
+        </figure>
+        <figure>
+          <img src="WG-V-43.jpg" alt="WG-V-43">
+          <figcaption>WG-V-43</figcaption>
+        </figure>
+    </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ====== SET YOUR PASSCODE HERE ======
+    const ACCESS_CODE = "Sterkfontein90";
+    // ====================================
+
+    // Normalise: strip spaces, case, and invisible zero-width characters
+    const ZW = /[\u200B-\u200D\u2060\uFEFF]/g;
+    const norm = s => (s||"").toString().replace(ZW,"").replace(/\s+/g,"").toLowerCase();
+
+    const $ = sel => document.querySelector(sel);
+    const passInput = $("#passcode");
+    const errorBox = $("#error");
+    const debugBox = $("#debug");
+
+    function setUnlocked() {
+      document.body.classList.add("unlocked");
+      window.scrollTo(0,0);
+    }
+
+    function showDebug(info) {
+      const u = new URL(window.location.href);
+      if (u.searchParams.get("debug") === "1") {
+        debugBox.style.display = "block";
+        debugBox.textContent = info;
+      }
+    }
+
+    function unlock(raw) {
+      const input = raw ?? passInput.value;
+      const a = norm(input);
+      const b = norm(ACCESS_CODE);
+      const ok = a === b;
+
+      showDebug(`typed(raw): ${JSON.stringify(input)}
+norm(typed): ${a}
+norm(code) : ${b}
+match?     : ${ok}`);
+
+      if (ok) {
+        errorBox.textContent = "";
+        setUnlocked();
+      } else {
+        errorBox.textContent = "Incorrect code.";
+      }
+    }
+
+    // Button + Enter
+    $("#unlock").addEventListener("click", () => unlock());
+    passInput.addEventListener("keydown", e => { if (e.key === "Enter") unlock(); });
+
+    // Auto-unlock via URL: ?code=YOURCODE
+    (function autoUnlockFromURL(){
+      const u = new URL(window.location.href);
+      const c = u.searchParams.get("code");
+      if (c) unlock(c);
+    })();
+  </script>
+</body>
+</html>
